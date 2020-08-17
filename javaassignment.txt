@@ -1,0 +1,365 @@
+1>********************************************************************
+package com.company;
+
+public class Calculator {
+
+    interface Operations{
+        int operation(int a,int b);
+    }
+
+    public static void main(String[] args) {
+        Operations additin=(int a,int b)->a+b;
+        System.out.println("addition " + additin.operation(2,3));
+
+        Operations subtraction=(int a,int b)->(a-b);
+        System.out.println("Difference " + subtraction.operation(3,5));
+
+        Operations product=(int a,int b)->a*b;
+        System.out.println("Product " + product.operation(2,3));
+
+        Operations safeDivision=(int a,int b)->{
+            if (b == 0)
+                return 0;
+            return (a/b);
+        };
+        System.out.println("safeDivision " + safeDivision.operation(10,5));
+    }
+}
+
+
+
+
+
+
+2>***************************************************************************
+package com.company;
+import java.util.Scanner;
+class Rectangle{
+    int width,height;
+    public void display(){
+        System.out.println("Width is " + width  + "  Height is  " + height);
+        System.out.println("Area of rectangle is " + width*height);
+    }
+}
+public class RectangleArea extends Rectangle {
+    public void read_input() {
+        Scanner sc = new Scanner(System.in);
+        width = sc.nextInt();
+        height = sc.nextInt();
+    }
+
+    public static void main(String args[]) {
+
+    RectangleArea ar = new RectangleArea();
+    ar.read_input();
+    ar.display();
+}
+}
+
+
+
+
+
+3>**************************************************************************************
+
+package com.company;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class Employee {
+    int empid;
+    String empname;
+    String empDesignation;
+    int empsalary;
+    String emplocation;
+
+    public Employee(int empid, String empname, String empDesignation, int empsalary, String emplocation) {
+        this.empid=empid;
+        this.empname=empname;
+        this.empDesignation=empDesignation;
+        this.empsalary=empsalary;
+        this.emplocation=emplocation;
+    }
+
+    public int getEmpid() {
+        return empid;
+    }
+
+    public void setEmpid(int empid) {
+        this.empid = empid;
+    }
+
+    public String getEmpname() {
+        return empname;
+    }
+
+    public void setEmpname(String empname) {
+        this.empname = empname;
+    }
+
+    public String getEmpDesignation() {
+        return empDesignation;
+    }
+
+    public void setEmpDesignation(String empDesignation) {
+        this.empDesignation = empDesignation;
+    }
+
+    public int getEmpsalary() {
+        return empsalary;
+    }
+
+    public void setEmpsalary(int empsalary) {
+        this.empsalary = empsalary;
+    }
+
+    public String getEmplocation() {
+        return emplocation;
+    }
+
+    public void setEmplocation(String emplocation) {
+        this.emplocation = emplocation;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empid=" + empid +
+                ", empname='" + empname + '\'' +
+                ", empDesignation='" + empDesignation + '\'' +
+                ", empsalary=" + empsalary +
+                ", emplocation='" + emplocation + '\'' +
+                '}';
+    }
+
+}
+
+
+
+
+package com.company;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class EmployeObjec {
+    public static void main(String[] args) {
+        List<Employee> people = Arrays.asList(
+          new Employee(1,"Jeevan","Manager",42352,"Kadapa"),
+          new Employee(2,"Reddy","executivE",54230,"Rayachoti"),
+          new Employee(3,"Tharun","cheif",58923,"Jalandhar"),
+          new Employee(4,"Santhosh","director",45623,"Hyderabad"),
+          new Employee(5,"Jyothi","chef",32500,"chittor"),
+          new Employee(6,"Umar","Supervisior",25301,"Manchi"),
+          new Employee(7,"Prakash","asistancE",58960,"karchi"),
+          new Employee(8,"shiva","Designer",25603,"Manipur"),
+          new Employee(9,"sundhar","executivE",65823,"Macharala"),
+          new Employee(10,"sai","operator",25630,"kerala")
+        );
+        people.stream().filter(p -> p.getEmplocation().startsWith("M")).forEach(p -> System.out.println(p.getEmplocation()));
+        people.stream().filter(p -> p.getEmpDesignation().endsWith("E")).forEach(p -> System.out.println(p.empDesignation));
+        people.stream().filter(p -> p.getEmpsalary() > 50000).forEach(p -> System.out.println(p.getEmpsalary()));
+        people.stream().filter(p -> p.getEmpname() != null).forEach(p -> System.out.println(p.getEmpname()));
+
+    }
+}
+
+
+
+
+
+
+
+4>*********************************************************************************************************************************************
+package com.company;
+
+public class Circle {
+    private double radius;
+    private String color;
+    public Circle(){
+        radius=1.0;
+        color="red";
+    }
+    public Circle(double r)
+    {
+        radius=r;
+        color="red";
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+    public double getArea(){
+        return radius*radius*3.14;
+    }
+
+    public static void main(String[] args) {
+        Circle c=new Circle(5);
+        System.out.println(c.getRadius());
+        System.out.println(c.getArea());
+    }
+}
+
+
+
+
+
+
+5>*******************************************************************************************************
+package com.company;
+
+public class Complex {
+    double real,imaginary;
+
+    public Complex(double real,double imaginary){
+        this.real=real;
+        this.imaginary=imaginary;
+    }
+
+    public Complex() {
+
+    }
+
+    Complex addComp(Complex c1,Complex c2)
+    {
+        Complex temp =new Complex();
+        temp.real=c1.real + c2.real;
+        temp.imaginary=c1.imaginary + c2.imaginary;
+        return  temp;
+    }
+    Complex subtractComp(Complex c1,Complex c2)
+    {
+        Complex temp=new Complex();
+        temp.real=c1.real - c2.real;
+        temp.imaginary=c1.imaginary-c2.imaginary;
+        return  temp;
+    }
+    Complex productComp(Complex c1,Complex c2)
+    {
+        Complex temp=new Complex();
+        temp.real=c1.real*c2.real;
+        temp.imaginary=c1.imaginary*c2.imaginary;
+        return  temp;
+    }
+    public void printComplexNumber(){
+        System.out.println("Complex number: " + real + " + " + imaginary + "i");
+    }
+
+    public static void main(String[] args) {
+        Complex c1=new Complex(4,5);
+        c1.printComplexNumber();
+        Complex c2=new Complex(6,9);
+        c2.printComplexNumber();
+        Complex c3=new Complex();
+        c3=c3.addComp(c1,c2);
+        System.out.println("sum of :");
+        c3.printComplexNumber();
+        c3=c3.subtractComp(c1,c2);
+        System.out.println("difference is :");
+        c3.printComplexNumber();
+        c3=c3.productComp(c1,c2);
+        System.out.println("product is :");
+        c3.printComplexNumber();
+
+    }
+}
+
+
+
+
+
+
+
+
+6>*************************************************************************************************
+package com.company;
+
+public class EmployeeDetail {
+    String name;
+    int year;
+    int salary;
+    String address;
+    public EmployeeDetail(String name,int year,int salary,String address){
+        this.name=name;
+        this.year=year;
+        this.salary=salary;
+        this.address=address;
+    }
+    public String getName(){
+        return name;
+    }
+    public int getYear(){
+        return year;
+    }
+    public int getSalary(){
+        return salary;
+    }
+    public String getAddress(){
+        return address;
+    }
+
+    public static void main(String[] args) {
+        EmployeeDetail ed1=new EmployeeDetail("Robert",1994,25360,"64C- WallStreet");
+        EmployeeDetail ed2=new EmployeeDetail("Sam",2000,35360,"68D- WallStreet");
+        EmployeeDetail ed3=new EmployeeDetail("John",1999,56360,"26B- WallStreet");
+        System.out.println("Name\t\tYear of joining\t\t Address");
+        System.out.println(ed1.getName()+"\t\t\t"+ed1.year+"\t\t\t"+ed1.address);
+        System.out.println(ed2.getName()+"\t\t\t\t"+ed2.year+"\t\t\t"+ed2.address);
+        System.out.println(ed3.getName()+"\t\t\t"+ed3.year+"\t\t\t"+ed3.address);
+    }
+}
+
+
+
+
+
+7>*******************************************************************************************************
+package com.company;
+
+public class Triangle {
+    double a,b,c;
+    Triangle(double a,double b,double c){
+        this.a=a;
+        this.b=b;
+        this.c=c;
+    }
+    public double area(){
+        double s;
+        s=(a+b+c)/2;
+        return Math.sqrt(s*(s-a)*(s-b)*(s-c));
+    }
+
+    public static void main(String[] args) {
+        Triangle t=new Triangle(2,5,6);
+        System.out.println(t.area());
+    }
+}
+
+
+
+
+
+
+8>***********************************************************************************
+package com.company;
+import java.util.*;
+public class GenericExc {
+    static void check(String n)
+    {
+        try{
+            int p = Integer.parseInt(n);
+           // System.out.println(p);
+            double q=p/3;
+            double ans=p-q;;
+            System.out.println(ans);
+        }catch (NumberFormatException ex) {
+            System.out.println("Entered value is not a number");
+        }
+    }
+    public static void main(String args[]) {
+        Scanner sc= new Scanner(System.in);
+        String n=sc.nextLine();
+        check(n);
+    }
+    }
